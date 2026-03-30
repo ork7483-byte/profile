@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #000000;
+      --dark: #0a0a0a;
+      --beige: #ede8e4;
+      --beige-dark: #d8d0c8;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-300: #b0b0b0;
+      --gray-500: #888888;
+      --gray-700: #555555;
+      --gray-900: #111111;
+
+      --font: 'Noto Sans KR', 'Apple SD Gothic Neo', -apple-system, sans-serif;
+      --radius: 24px;
+      --transition: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font);
+      font-weight: 400;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gray-700); border-radius: 2px; }
+
+    /* ─── Container ─── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    /* ─── Navigation ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 28px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mix-blend-mode: difference;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--white);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px 60px;
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: slideUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: slideUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-name-en {
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--gray-500);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: slideUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-100);
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: slideUp 0.8s ease 0.5s forwards;
+    }
+
+    .hero-bio {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--gray-300);
+      line-height: 1.9;
+      max-width: 440px;
+      opacity: 0;
+      animation: slideUp 0.8s ease 0.6s forwards;
+    }
+
+    /* ─── Photo ─── */
+    .hero-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      max-height: 540px;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.5s forwards;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.6s ease;
+    }
+
+    .hero-photo:hover img {
+      filter: grayscale(0%);
+    }
+
+    /* ─── Scroll indicator ─── */
+    .scroll-indicator {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px 60px;
+      opacity: 0;
+      animation: slideUp 0.8s ease 1s forwards;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-700);
+    }
+
+    /* ─── Career Section ─── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 48px;
+    }
+
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .career-item {
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .career-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .career-item:nth-child(odd) {
+      padding-right: 40px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .career-item:nth-child(even) {
+      padding-left: 40px;
+    }
+
+    .career-company {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .career-role {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray-300);
+      margin-bottom: 4px;
+    }
+
+    .career-period {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Skills ─── */
+    .skills-wrap {
+      margin-top: 80px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--gray-100);
+      background: transparent;
+      letter-spacing: 0.02em;
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+
+    /* ─── Education ─── */
+    .edu-wrap {
+      margin-top: 80px;
+    }
+
+    .edu-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .edu-marker {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gray-700);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .edu-school {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .edu-degree {
+      font-size: 0.82rem;
+      color: var(--gray-300);
+      margin-top: 2px;
+    }
+
+    .edu-year {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    /* ─── Business Section (Beige) ─── */
+    .biz-section {
+      background: var(--beige);
+      border-radius: var(--radius);
+      margin: 40px 60px;
+      padding: 80px 60px;
+      color: var(--black);
+    }
+
+    .biz-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .biz-header {
+      margin-bottom: 64px;
+    }
+
+    .biz-header-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    .biz-header h2 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--black);
+    }
+
+    .biz-header p {
+      font-size: 0.9rem;
+      color: var(--gray-500);
+      margin-top: 16px;
+      max-width: 420px;
+    }
+
+    /* ─── Business Cards ─── */
+    .biz-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .biz-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .biz-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .biz-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-emoji {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .card-category {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 8px;
+    }
+
+    .card-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: gap var(--transition);
+    }
+
+    .card-link:hover {
+      gap: 10px;
+    }
+
+    .card-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ─── Portfolio Section ─── */
+    @keyframes shimmer-move {
+      0% { transform: translateX(-100%) rotate(15deg); }
+      100% { transform: translateX(300%) rotate(15deg); }
+    }
+
+    @keyframes glow-drift {
+      0%, 100% { opacity: 0.3; transform: translate(0, 0) scale(1); }
+      50% { opacity: 0.5; transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    @keyframes glow-drift-2 {
+      0%, 100% { opacity: 0.25; transform: translate(0, 0) scale(1); }
+      50% { opacity: 0.45; transform: translate(-40px, 15px) scale(1.15); }
+    }
+
+    .portfolio-section {
+      max-width: 100%;
+      padding: 0 60px 80px;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+      animation: shimmer-move 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .portfolio-bg-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .portfolio-bg-glow.glow-1 {
+      width: 400px;
+      height: 400px;
+      top: 10%;
+      left: -5%;
+      background: rgba(237, 232, 228, 0.06);
+      animation: glow-drift 12s ease-in-out infinite;
+    }
+
+    .portfolio-bg-glow.glow-2 {
+      width: 350px;
+      height: 350px;
+      bottom: 15%;
+      right: -5%;
+      background: rgba(255, 255, 255, 0.04);
+      animation: glow-drift-2 15s ease-in-out infinite;
+    }
+
+    .portfolio-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .portfolio-section > .portfolio-header,
+    .portfolio-section > .portfolio-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+
+    .portfolio-header {
+      text-align: center;
+      margin: 0 auto 20px;
+      padding: 0 0 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .portfolio-header h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--white);
+      margin: 0;
+      padding: 0;
+    }
+
+    .portfolio-header p {
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      letter-spacing: 0.02em;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px 20px;
+    }
+
+    .portfolio-item {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .portfolio-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .portfolio-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--gray-900);
+      margin-bottom: 12px;
+    }
+
+    .portfolio-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.4s ease, transform 0.5s ease;
+    }
+
+    .portfolio-thumb:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    .portfolio-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--gray-700);
+    }
+
+    .portfolio-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      transition: all 0.4s ease;
+    }
+
+    .portfolio-date {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      margin-top: 2px;
+      transition: all 0.4s ease;
+    }
+
+    /* ── 스플릿 스타일 ── */
+    .portfolio-item {
+      display: grid;
+      grid-template-rows: auto auto;
+    }
+
+    .portfolio-thumb {
+      margin-bottom: 10px;
+    }
+
+    .portfolio-name {
+      font-size: 0.95rem;
+      font-weight: 800;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 6px;
+    }
+
+    .portfolio-date {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--beige);
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── Portfolio Year Divider ─── */
+    .portfolio-year-divider {
+      grid-column: 1 / -1;
+      padding: 60px 0 20px;
+    }
+
+    .portfolio-year-divider:first-child {
+      padding-top: 0;
+    }
+
+    .portfolio-year-divider .year-label {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .portfolio-year-divider .year-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-300);
+      margin-bottom: 6px;
+    }
+
+    .portfolio-year-divider .year-desc {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ─── Portfolio Modal ─── */
+    .pf-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.96);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      overflow-y: auto;
+      padding: 60px 24px;
+    }
+
+    .pf-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pf-modal {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      color: var(--white);
+    }
+
+    .pf-modal-close {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      z-index: 210;
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: rgba(255,255,255,0.4);
+      font-size: 2rem;
+      transition: color 0.3s;
+    }
+
+    .pf-modal-close:hover { color: var(--white); }
+
+    .pf-modal-text { order: 1; }
+
+    .pf-modal-tags {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pf-modal-tags span.line {
+      width: 32px;
+      height: 1px;
+      background: #e53e3e;
+      opacity: 0.6;
+    }
+
+    .pf-modal-tags span.tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #e53e3e;
+    }
+
+    .pf-modal-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .pf-modal-category {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .pf-modal-section {
+      margin-bottom: 36px;
+    }
+
+    .pf-modal-section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pf-modal-section-label .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray-300);
+    }
+
+    .pf-modal-section-label h4 {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .pf-modal-section-label.solution .dot { background: #e53e3e; opacity: 0.4; }
+    .pf-modal-section-label.solution h4 { color: rgba(229,62,62,0.5); }
+
+    .pf-modal-section p {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-300);
+      line-height: 1.75;
+      padding-left: 16px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .pf-modal-section.solution p {
+      border-left-color: rgba(229,62,62,0.15);
+    }
+
+    .pf-modal-extlink {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    .pf-modal-extlink:hover {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    .pf-modal-extlink svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Modal Gallery */
+    .pf-modal-gallery {
+      order: 2;
+    }
+
+    .pf-modal-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .pf-modal-gallery-grid.single {
+      grid-template-columns: 1fr;
+    }
+
+    .pf-gallery-item {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--gray-900);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .pf-gallery-item img,
+    .pf-gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .pf-gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .pf-gallery-item.is-video::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    /* Fullscreen Lightbox */
+    .pf-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .pf-lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pf-lightbox-close {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      z-index: 310;
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 2.2rem;
+      transition: color 0.3s;
+    }
+
+    .pf-lightbox-close:hover { color: white; }
+
+    .pf-lightbox-media {
+      max-width: 90vw;
+      max-height: 80vh;
+    }
+
+    .pf-lightbox-media img,
+    .pf-lightbox-media video {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .pf-lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .pf-lightbox-nav:hover { background: rgba(255,255,255,0.2); color: white; }
+    .pf-lightbox-nav.prev { left: 24px; }
+    .pf-lightbox-nav.next { right: 24px; }
+
+    .pf-lightbox-counter {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.15em;
+    }
+
+    @media (max-width: 900px) {
+      .pf-modal {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .pf-modal-text { order: 2; }
+      .pf-modal-gallery { order: 1; }
+    }
+
+    /* ─── Responsive: Portfolio ─── */
+    @media (max-width: 900px) {
+      .portfolio-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── Footer (Beige) ─── */
+    .footer {
+      background: var(--beige);
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin: 0 60px;
+      padding: 80px 60px 40px;
+      color: var(--black);
+    }
+
+    .footer-cta {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--black);
+      margin-bottom: 16px;
+      text-decoration: none;
+      display: block;
+      position: relative;
+    }
+
+    .footer-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--black);
+      transition: width 0.6s ease;
+    }
+
+    .footer-cta:hover::after {
+      width: 100%;
+    }
+
+    .footer-email {
+      font-size: 1rem;
+      color: var(--gray-500);
+      margin-bottom: 60px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--gray-500);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--transition);
+    }
+
+    .footer-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--beige-dark);
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--gray-500);
+    }
+
+    /* ─── Animations ─── */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .container, .section { padding-left: 24px; padding-right: 24px; }
+
+      .nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 100px 24px 60px;
+      }
+
+      .hero-photo {
+        grid-row: 1;
+        max-height: 400px;
+        aspect-ratio: 4 / 3;
+      }
+
+      .hero-info { grid-row: 2; }
+
+      .career-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .career-item:nth-child(odd) {
+        padding-right: 0;
+        border-right: none;
+      }
+
+      .career-item:nth-child(even) {
+        padding-left: 0;
+      }
+
+      .scroll-indicator { padding: 0 24px 40px; }
+
+      .biz-section {
+        margin: 20px 16px;
+        padding: 48px 24px;
+      }
+
+      .biz-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        margin: 0 16px;
+        padding: 48px 24px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="메인 내비게이션">
+    <a href="#" class="nav-logo">Profile</a>
+    <ul class="nav-links">
+      <li><a href="#business">Business</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="프로필 소개">
+    <div class="hero-info">
+      <p class="hero-label">Lecture Profile</p>
+      <h1 class="hero-name">홍길동</h1>
+      <p class="hero-name-en">HONG GILDONG</p>
+      <p class="hero-title">마케팅 디렉터 &middot; 브랜드 전략가 &middot; 강사</p>
+      <p class="hero-bio">
+        10년 이상의 디지털 마케팅 실무 경험을 바탕으로 브랜드 전략과 콘텐츠 기획을 가르칩니다.
+        실전 사례 중심의 강의로 수강생들이 현장에서 바로 적용할 수 있는 인사이트를 전달합니다.
+      </p>
+    </div>
+    <div class="hero-photo" role="img" aria-label="프로필 사진">
+      <img src="profile.jpg" alt="프로필 사진" loading="eager" />
+    </div>
+  </section>
+
+
+
+  <!-- Portfolio -->
+  <section class="portfolio-section" id="portfolio" aria-label="포트폴리오">
+    <div class="portfolio-bg-glow glow-1"></div>
+    <div class="portfolio-bg-glow glow-2"></div>
+    <div class="portfolio-header reveal">
+      <h2>PORTFOLIO</h2>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- 2026 -->
+      <div class="portfolio-year-divider reveal"><div class="year-label">2026</div></div>
+
+      <div class="portfolio-item">
+        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-name">동아제약 강의</div>
+        <div class="portfolio-date">2026.03</div>
+      </div>
+
+      <div class="portfolio-item">
+        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-name">인천대 강의</div>
+        <div class="portfolio-date">2026.01</div>
+      </div>
+
+      <div class="portfolio-item">
+        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-name">오르시떼</div>
+        <div class="portfolio-date">2026.01</div>
+      </div>
+
+      <div class="portfolio-item">
+        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-name">SELECT AI MODEL 런칭</div>
+        <div class="portfolio-date">2026.01</div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="portfolio-year-divider reveal"><div class="year-label">2025</div></div>
+
+      <div class="portfolio-item" data-project="samsung-electronics" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/7.webp" alt="삼성전자" loading="lazy" /></div>
+        <div class="portfolio-name">삼성전자</div>
+        <div class="portfolio-date">2025.12</div>
+      </div>
+
+      <div class="portfolio-item">
+        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-name">오르시떼</div>
+        <div class="portfolio-date">2025.12</div>
+      </div>
+
+      <div class="portfolio-item">
+        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-name">LG전자</div>
+        <div class="portfolio-date">2025.11</div>
+      </div>
+
+      <div class="portfolio-item" data-project="hyundai" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/15.webp" alt="현대자동차" loading="lazy" /></div>
+        <div class="portfolio-name">현대자동차</div>
+        <div class="portfolio-date">2025.10</div>
+      </div>
+
+      <div class="portfolio-item" data-project="fastcampus" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/14.webp" alt="패스트캠퍼스" loading="lazy" /></div>
+        <div class="portfolio-name">패스트캠퍼스</div>
+        <div class="portfolio-date">2025.06</div>
+      </div>
+
+      <div class="portfolio-item" data-project="ksoc" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/13.webp" alt="대한체육회" loading="lazy" /></div>
+        <div class="portfolio-name">대한체육회</div>
+        <div class="portfolio-date">2025.04</div>
+      </div>
+
+      <div class="portfolio-item" data-project="samsung-card" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/12.webp" alt="삼성카드" loading="lazy" /></div>
+        <div class="portfolio-name">삼성카드</div>
+        <div class="portfolio-date">2025.03</div>
+      </div>
+
+      <div class="portfolio-item" data-project="lotteria" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/6.webp" alt="롯데리아" loading="lazy" /></div>
+        <div class="portfolio-name">롯데리아</div>
+        <div class="portfolio-date">2025.02</div>
+      </div>
+
+      <div class="portfolio-item" data-project="nike" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/5.webp" alt="나이키" loading="lazy" /></div>
+        <div class="portfolio-name">나이키</div>
+        <div class="portfolio-date">2025.01</div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="portfolio-year-divider reveal"><div class="year-label">2024</div></div>
+
+      <div class="portfolio-item" data-project="volkswagen" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/4.webp" alt="폭스바겐" loading="lazy" /></div>
+        <div class="portfolio-name">폭스바겐</div>
+        <div class="portfolio-date">2024.12</div>
+      </div>
+
+      <div class="portfolio-item" data-project="louis" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/3.webp" alt="루이까또즈" loading="lazy" /></div>
+        <div class="portfolio-name">루이까또즈</div>
+        <div class="portfolio-date">2024.11</div>
+      </div>
+
+      <div class="portfolio-item" data-project="sk-hynix" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/2.webp" alt="SK하이닉스" loading="lazy" /></div>
+        <div class="portfolio-name">SK하이닉스</div>
+        <div class="portfolio-date">2024.08</div>
+      </div>
+
+      <div class="portfolio-item" data-project="samsung-kakao" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/10.webp" alt="삼성카드 x 카카오 AI 해커톤" loading="lazy" /></div>
+        <div class="portfolio-name">삼성카드 x 카카오 AI 해커톤</div>
+        <div class="portfolio-date">2024.08</div>
+      </div>
+
+      <div class="portfolio-item" data-project="lg" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/9.webp" alt="LG전자" loading="lazy" /></div>
+        <div class="portfolio-name">LG전자</div>
+        <div class="portfolio-date">2024.07</div>
+      </div>
+
+      <div class="portfolio-item" data-project="bmw" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/1.webp" alt="삼성카드 x BMW MINI" loading="lazy" /></div>
+        <div class="portfolio-name">삼성카드 x BMW MINI</div>
+        <div class="portfolio-date">2024.06</div>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:80px auto 0;border-top:1px solid rgba(255,255,255,0.1);"></div>
+  </section>
+
+  <!-- Business Section (Beige) -->
+  <section class="biz-section" id="business" aria-label="운영 중인 사업체">
+    <div class="biz-inner">
+      <div class="biz-header reveal">
+        <p class="biz-header-label">Portfolio</p>
+        <h2>운영 중인 사업체</h2>
+        <p>직접 창업하고 운영하며 쌓은 실전 경험을 강의에 녹여냅니다.</p>
+      </div>
+
+      <div class="biz-cards">
+        <article class="biz-card">
+          <div class="card-emoji">&#x1F680;</div>
+          <div class="card-category">마케팅 에이전시</div>
+          <h3 class="card-name">어반 마케팅</h3>
+          <p class="card-desc">
+            중소기업과 스타트업을 위한 디지털 마케팅 풀서비스 에이전시.
+            브랜드 기획부터 SNS 운영, 퍼포먼스 광고까지 원스톱으로 제공합니다.
+          </p>
+          <a href="#" class="card-link" aria-label="어반 마케팅 웹사이트 방문">
+            Visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="biz-card">
+          <div class="card-emoji">&#x1F3AC;</div>
+          <div class="card-category">콘텐츠 스튜디오</div>
+          <h3 class="card-name">크리에이티브랩</h3>
+          <p class="card-desc">
+            유튜브 및 숏폼 콘텐츠 전문 제작 스튜디오.
+            기획, 촬영, 편집을 내재화하여 빠르고 일관된 퀄리티의 영상을 제작합니다.
+          </p>
+          <a href="#" class="card-link" aria-label="크리에이티브랩 웹사이트 방문">
+            Visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="biz-card">
+          <div class="card-emoji">&#x1F4DA;</div>
+          <div class="card-category">온라인 교육</div>
+          <h3 class="card-name">마케팅 스쿨</h3>
+          <p class="card-desc">
+            실무자 중심의 마케팅 온라인 강의 플랫폼.
+            현직 마케터들이 강사로 참여해 이론보다 현장에서 쓰이는 기술을 가르칩니다.
+          </p>
+          <a href="#" class="card-link" aria-label="마케팅 스쿨 웹사이트 방문">
+            Visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Modal -->
+  <div class="pf-modal-overlay" id="pfModal">
+    <button class="pf-modal-close" id="pfModalClose">&times;</button>
+    <div class="pf-modal">
+      <div class="pf-modal-text">
+        <div class="pf-modal-tags">
+          <span class="line"></span>
+          <span class="tag" id="modalTags"></span>
+        </div>
+        <h2 class="pf-modal-title" id="modalTitle"></h2>
+        <p class="pf-modal-category" id="modalCategory"></p>
+
+        <div class="pf-modal-section">
+          <div class="pf-modal-section-label">
+            <div class="dot"></div>
+            <h4>CHALLENGE</h4>
+          </div>
+          <p id="modalChallenge"></p>
+        </div>
+
+        <div class="pf-modal-section solution">
+          <div class="pf-modal-section-label solution">
+            <div class="dot"></div>
+            <h4>SOLUTION</h4>
+          </div>
+          <p id="modalSolution"></p>
+        </div>
+
+        <div id="modalExtLink" style="margin-top:24px"></div>
+      </div>
+
+      <div class="pf-modal-gallery">
+        <div class="pf-modal-gallery-grid" id="modalGalleryGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Lightbox -->
+  <div class="pf-lightbox" id="pfLightbox">
+    <button class="pf-lightbox-close" id="lbClose">&times;</button>
+    <button class="pf-lightbox-nav prev" id="lbPrev">&lsaquo;</button>
+    <button class="pf-lightbox-nav next" id="lbNext">&rsaquo;</button>
+    <div class="pf-lightbox-media" id="lbMedia"></div>
+    <div class="pf-lightbox-counter" id="lbCounter"></div>
+  </div>
+
+  <!-- Footer (Beige) -->
+  <footer class="footer" id="contact" role="contentinfo">
+    <a href="mailto:ork7483@gmail.com" class="footer-cta">Contact</a>
+    <p class="footer-email">ork7483@gmail.com</p>
+    <div class="footer-links">
+      <a href="#">Youtube</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026. All rights reserved.</span>
+      <span class="footer-copy">홍길동</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // ─── Project Data ───
+      var projectData = {
+        'samsung-electronics': {
+          title: '삼성전자', category: '2025.12', tags: 'Tech / AI',
+          challenge: '전사적 AI 비주얼 가이드라인 준수 및 고품질 구현',
+          solution: '기업용 전용 모델 튜닝을 통한 일관성 있는 비주얼 생성',
+          thumb: 'images/portfolio/7.webp', gallery: ['images/portfolio/7.webp']
+        },
+        'hyundai': {
+          title: '현대자동차', category: '2025.10', tags: 'Automotive',
+          challenge: '전기차 특유의 매끄러운 표면광 및 미래지향적 감도 유지',
+          solution: '커스텀 LoRA 학습을 통한 초정밀 차량 렌더링 최적화',
+          thumb: 'images/portfolio/15.webp',
+          gallery: ['images/portfolio/gallery/Genesis/1(p).webp','images/portfolio/gallery/Genesis/2(p).webp','images/portfolio/gallery/Genesis/3(p).webp','images/portfolio/gallery/Genesis/4(p).webp','images/portfolio/gallery/Genesis/5(p).webp'],
+          externalLinks: [
+            { url: 'https://www.instagram.com/p/DSv2kAukkI7/', label: 'Instagram 게시물 보기' },
+            { url: 'https://www.instagram.com/p/DPGEgo_gtQ1/', label: 'Instagram 게시물 보기' }
+          ]
+        },
+        'fastcampus': {
+          title: '패스트캠퍼스', category: '2025.06', tags: 'Commerce',
+          challenge: '교육 콘텐츠의 신뢰감을 주는 역동적인 전문 강사 비주얼',
+          solution: '다양한 교육 환경 배경 합성 및 표정 강화 기술 적용',
+          thumb: 'images/portfolio/14.webp', gallery: ['images/portfolio/14.webp']
+        },
+        'ksoc': {
+          title: '대한체육회', category: '2025.04', tags: 'Public',
+          challenge: '스포츠의 정적인 이미지에서 동적인 에너지를 AI로 전환',
+          solution: '액션 포즈 최적화 알고리즘을 통한 역동적 구도 생성',
+          thumb: 'images/portfolio/13.webp',
+          gallery: ['images/portfolio/gallery/KSOC/대한체육회.mp4']
+        },
+        'samsung-card': {
+          title: '삼성카드', category: '2025.03', tags: 'Commerce',
+          challenge: '금융 서비스의 프리미엄 라이프스타일 이미지 일관성 확보',
+          solution: '럭셔리 라이프스타일 데이터셋 기반 시각적 톤앤매너 고정',
+          thumb: 'images/portfolio/12.webp',
+          gallery: ['images/portfolio/gallery/Samsung_Card/withsamsungcard (1).mp4','images/portfolio/gallery/Samsung_Card/withsamsungcard (2).mp4','images/portfolio/gallery/Samsung_Card/withsamsungcard (3).mp4'],
+          externalLinks: [
+            { url: 'https://www.instagram.com/reels/DD8Y-HfO-er/', label: 'Instagram Reel 보기' }
+          ]
+        },
+        'lotteria': {
+          title: '롯데리아', category: '2025.02', tags: 'Commerce',
+          challenge: 'AI 이미지 특유의 어색함을 제거한 먹음직스러운 질감 표현',
+          solution: '푸드 전문 데이터 파이프라인 구축 및 텍스처 정밀 보정',
+          thumb: 'images/portfolio/6.webp',
+          gallery: ['images/portfolio/gallery/Lotteria/롯데리아.mp4'],
+          externalLinks: [
+            { url: 'images/portfolio/gallery/Lotteria/store/lotteria.MOV', label: '매장내 상영 영상 보기', isVideo: true }
+          ]
+        },
+        'nike': {
+          title: '나이키', category: '2025.01', tags: 'Commerce',
+          challenge: '스포츠 브랜드 고유의 역동성과 정밀한 신발 디테일 구현',
+          solution: 'ControlNet을 활용한 인체 포즈 및 제품 외형 정밀 제어',
+          thumb: 'images/portfolio/5.webp',
+          gallery: ['images/portfolio/gallery/Nike/1(j).webp','images/portfolio/gallery/Nike/2(j).webp','images/portfolio/gallery/Nike/3(j).webp']
+        },
+        'volkswagen': {
+          title: '폭스바겐', category: '2024.12', tags: 'Automotive',
+          challenge: '미니멀리즘 디자인 철학을 반영한 정제된 배경 구성',
+          solution: '클린 백그라운드 생성 기술을 통한 제품 주목도 극대화',
+          thumb: 'images/portfolio/4.webp',
+          gallery: ['images/portfolio/gallery/Volkswagen/1(j).webp','images/portfolio/gallery/Volkswagen/2(j).webp','images/portfolio/gallery/Volkswagen/3(j).webp']
+        },
+        'louis': {
+          title: '루이까또즈', category: '2024.11', tags: 'Commerce',
+          challenge: '고급 패션 화보급 조명 처리와 가죽 질감의 사실적 묘사',
+          solution: '스튜디오 조명 시뮬레이션 및 질감 특화 업스케일링 적용',
+          thumb: 'images/portfolio/3.webp',
+          gallery: ['images/portfolio/gallery/Louis_Quatorze/img_1(p).webp','images/portfolio/gallery/Louis_Quatorze/img_2(p).webp','images/portfolio/gallery/Louis_Quatorze/img_3(p).webp','images/portfolio/gallery/Louis_Quatorze/img_4(p).webp','images/portfolio/gallery/Louis_Quatorze/img_5(p).webp']
+        },
+        'sk-hynix': {
+          title: 'SK하이닉스', category: '2024.08', tags: 'Tech / AI',
+          challenge: '복잡한 반도체 공정 및 첨단 시설물 비주얼의 실제감 구현',
+          solution: '산업 시설 특화 데이터 보강을 통한 건축적 정밀도 향상',
+          thumb: 'images/portfolio/2.webp',
+          gallery: ['images/portfolio/gallery/SK하이닉스/SK_Hynix.mp4']
+        },
+        'samsung-kakao': {
+          title: '삼성카드 x 카카오 AI 해커톤', category: '2024.08', tags: 'Tech / AI',
+          challenge: '아이디어의 역동성과 협업의 분위기를 혁신적으로 표현',
+          solution: '이벤트 현장 특유의 분위기를 살린 latent space 스타일링',
+          thumb: 'images/portfolio/10.webp', gallery: ['images/portfolio/10.webp']
+        },
+        'lg': {
+          title: 'LG전자', category: '2024.07', tags: 'Commerce',
+          challenge: '가전 제품의 프리미엄 소재와 인테리어 조화의 완벽성',
+          solution: '메탈릭 표면 반사 제어 및 인테리어 자동 배치 기술',
+          thumb: 'images/portfolio/9.webp',
+          gallery: ['images/portfolio/gallery/LG전자/0910_김치톡톡.mp4']
+        },
+        'bmw': {
+          title: '삼성카드 x BMW MINI', category: '2024.06', tags: 'Automotive',
+          challenge: '브랜드 헤리티지를 계승하는 특유의 그릴 및 조명 강조',
+          solution: '아이코닉 디자인 에셋 보존 중심의 생성 제어 로직 적용',
+          thumb: 'images/portfolio/1.webp', gallery: ['images/portfolio/1.webp']
+        }
+      };
+
+      // ─── Modal Logic ───
+      var modal = document.getElementById('pfModal');
+      var currentGallery = [];
+      var currentIdx = 0;
+
+      function openModal(key) {
+        var p = projectData[key];
+        if (!p) return;
+        document.getElementById('modalTitle').textContent = p.title;
+        document.getElementById('modalCategory').textContent = p.category;
+        document.getElementById('modalTags').textContent = p.tags;
+        document.getElementById('modalChallenge').textContent = p.challenge;
+        document.getElementById('modalSolution').textContent = p.solution;
+        currentGallery = p.gallery;
+        renderGalleryGrid();
+
+        // External links
+        var extWrap = document.getElementById('modalExtLink');
+        var links = p.externalLinks || (p.externalLink ? [p.externalLink] : []);
+        if (links.length) {
+          var linkHtml = '';
+          links.forEach(function(lnk, i) {
+            if (lnk.isVideo) {
+              linkHtml += '<a class="pf-modal-extlink" href="#" data-video-src="' + lnk.url + '" onclick="playExtVideo(this,event)">'
+                + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>'
+                + lnk.label + '</a> ';
+            } else {
+              linkHtml += '<a class="pf-modal-extlink" href="' + lnk.url + '" target="_blank" rel="noopener">'
+                + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>'
+                + lnk.label + (links.length > 1 && !lnk.isVideo ? ' ' + (i+1) : '') + '</a> ';
+            }
+          });
+          extWrap.innerHTML = linkHtml;
+          extWrap.style.display = '';
+        } else {
+          extWrap.innerHTML = '';
+          extWrap.style.display = 'none';
+        }
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function renderGalleryGrid() {
+        var grid = document.getElementById('modalGalleryGrid');
+        grid.className = 'pf-modal-gallery-grid' + (currentGallery.length === 1 ? ' single' : '');
+        var html = '';
+        currentGallery.forEach(function(src, i) {
+          var encoded = encodeURI(src);
+          var isVideo = encoded.toLowerCase().endsWith('.mp4') || encoded.toLowerCase().endsWith('.mov');
+          if (isVideo) {
+            html += '<div class="pf-gallery-item is-video" data-lb-index="' + i + '">'
+              + '<video src="' + encoded + '" muted playsinline preload="metadata" style="aspect-ratio:4/3"></video></div>';
+          } else {
+            html += '<div class="pf-gallery-item" data-lb-index="' + i + '">'
+              + '<img src="' + encoded + '" alt="Gallery ' + (i+1) + '" style="aspect-ratio:4/3" /></div>';
+          }
+        });
+        grid.innerHTML = html;
+        grid.querySelectorAll('.pf-gallery-item').forEach(function(el) {
+          el.addEventListener('click', function() { openLightbox(parseInt(el.dataset.lbIndex)); });
+        });
+      }
+
+      // Lightbox
+      var lightbox = document.getElementById('pfLightbox');
+      var lbIdx = 0;
+
+      function openLightbox(idx) {
+        lbIdx = idx;
+        renderLightbox();
+        lightbox.classList.add('open');
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        var vid = document.querySelector('#lbMedia video');
+        if (vid) vid.pause();
+      }
+
+      function renderLightbox() {
+        var media = document.getElementById('lbMedia');
+        var src = encodeURI(currentGallery[lbIdx]);
+        var isVideo = src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.mov');
+        if (isVideo) {
+          media.innerHTML = '<video src="' + src + '" controls autoplay muted playsinline></video>';
+        } else {
+          media.innerHTML = '<img src="' + src + '" alt="Gallery" />';
+        }
+        document.getElementById('lbCounter').textContent = currentGallery.length > 1 ? (lbIdx + 1) + ' / ' + currentGallery.length : '';
+        var navDisplay = currentGallery.length > 1 ? '' : 'none';
+        document.getElementById('lbPrev').style.display = navDisplay;
+        document.getElementById('lbNext').style.display = navDisplay;
+      }
+
+      document.getElementById('lbClose').addEventListener('click', closeLightbox);
+      document.getElementById('lbPrev').addEventListener('click', function(e) { e.stopPropagation(); lbIdx = (lbIdx - 1 + currentGallery.length) % currentGallery.length; renderLightbox(); });
+      document.getElementById('lbNext').addEventListener('click', function(e) { e.stopPropagation(); lbIdx = (lbIdx + 1) % currentGallery.length; renderLightbox(); });
+      lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+
+      window.playExtVideo = function(el, e) {
+        e.preventDefault();
+        var src = encodeURI(el.dataset.videoSrc);
+        var savedGallery = currentGallery;
+        currentGallery = [src];
+        lbIdx = 0;
+        openLightbox(0);
+        // restore original gallery when lightbox closes
+        var origClose = closeLightbox;
+        closeLightbox = function() {
+          origClose();
+          currentGallery = savedGallery;
+          closeLightbox = origClose;
+        };
+      };
+
+      document.getElementById('pfModalClose').addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.classList.contains('open')) {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowRight' && currentGallery.length > 1) { lbIdx = (lbIdx + 1) % currentGallery.length; renderLightbox(); }
+          if (e.key === 'ArrowLeft' && currentGallery.length > 1) { lbIdx = (lbIdx - 1 + currentGallery.length) % currentGallery.length; renderLightbox(); }
+          return;
+        }
+        if (modal.classList.contains('open') && e.key === 'Escape') closeModal();
+      });
+
+      document.querySelectorAll('.portfolio-item[data-project]').forEach(function(el) {
+        el.addEventListener('click', function() { openModal(el.dataset.project); });
+      });
+
+      // ─── Scroll Reveal ───
+      var targets = document.querySelectorAll('.reveal, .career-item, .biz-card, .portfolio-item');
+      var i = 0;
+      targets.forEach(function (el, idx) {
+        el.style.transitionDelay = (idx % 4) * 0.1 + 's';
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
