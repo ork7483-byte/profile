@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>알잘AI - 초안 생성 중</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-logo">
+        <span class="logo-text">알잘AI</span>
+        <button class="sidebar-toggle">⬜</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="create.html" class="nav-item active">
+          <span class="nav-icon">📄</span>
+          <span class="nav-label">상세페이지 제작</span>
+        </a>
+        <a href="studio.html" class="nav-item">
+          <span class="nav-icon">✨</span>
+          <span class="nav-label">AI 스튜디오</span>
+        </a>
+        <a href="agency.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">전문가 의뢰</span>
+        </a>
+      </nav>
+      <div class="section-header">
+        <span class="nav-icon">🕐</span>
+        <span class="nav-label">작업 기록</span>
+        <span class="arrow">∨</span>
+      </div>
+      <!-- 작업 기록 항목 -->
+      <div class="history-list">
+        <div class="history-item">
+          <div class="history-name">수분크림</div>
+          <div class="history-status">대기 중</div>
+          <div class="history-date">04월 01일</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-extras">
+        <div class="extra-item">
+          <span class="extra-icon membership-icon">👑</span>
+          <span class="nav-label">멤버십</span>
+        </div>
+        <div class="extra-item">
+          <span class="extra-icon promo-icon">🏠</span>
+          <span class="nav-label">프로모션 코드</span>
+        </div>
+      </div>
+      <div class="user-profile">
+        <div class="user-avatar">A</div>
+        <div class="user-info">
+          <div class="user-name">이승훈</div>
+          <div class="user-email">ork7483@gmail.c...</div>
+        </div>
+        <span class="user-menu">⋮</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="generating-content">
+      <div class="generating-card">
+        <!-- Pen Icon -->
+        <div class="generating-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="20" y="8" width="8" height="40" rx="2" transform="rotate(15 20 8)" fill="#2dd4a8"/>
+            <path d="M22 44 L26 52 L30 44" fill="#2dd4a8"/>
+          </svg>
+        </div>
+
+        <h1 class="generating-title">초안 생성 중</h1>
+        <p class="generating-desc"><span class="highlight-product">수분크림</span> 초안 생성이 진행 중입니다</p>
+
+        <!-- Progress Bar -->
+        <div class="generating-progress">
+          <div class="generating-progress-bar">
+            <div class="generating-progress-fill" id="genProgress" style="width: 50%"></div>
+          </div>
+        </div>
+
+        <div class="generating-percent" id="genPercent">50%</div>
+
+        <div class="generating-status">
+          <div class="spinner"></div>
+          <span>AI 기획서 초안 생성 중...</span>
+        </div>
+
+        <div class="generating-info">
+          <p class="info-line"><span class="info-icon">🕐</span> 예상 소요 시간: 10-20분</p>
+          <p class="info-line"><span class="info-icon">↗️</span> 이 페이지를 나가셔도 됩니다. 초안 생성은 백그라운드에서 계속 진행됩니다.</p>
+          <p class="info-line"><span class="info-icon">✉️</span> 초안이 준비되면 이메일로 알림을 보내드립니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">환불정책 자세히 보기</a>
+        <span class="divider">|</span>
+        <a href="#">이용약관 보기</a>
+      </div>
+      <div class="footer-info">
+        <div class="footer-col">
+          <h4>알잘AI</h4>
+          <p>상호 : 주식회사 알잘</p>
+          <p>대표자명 : 신영선 이기호 이상재</p>
+          <p>사업자등록번호 : 650-88-02311</p>
+          <p>통신판매업 신고번호 : 제 2021-경기광명-2192 호</p>
+        </div>
+        <div class="footer-col">
+          <h4>회사 정보</h4>
+          <p>사업장 주소 : 경기도 광명시 일직로 43, GIDC B동 1907호 1908호 1909호</p>
+          <p>전화번호 : 070-4334-0570</p>
+          <p>이메일 : cs@alzalstudio.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>고객 지원</h4>
+          <p>평일 09:00 - 18:00</p>
+          <p>문의 : cs@alzalstudio.com</p>
+          <br>
+          <p class="copyright">Copyright &copy; 2023 상세페이지 제작</p>
+          <p class="copyright">업체 | 회사로고제작 | 콘텐츠브랜딩 | 알잘스튜디오 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating Buttons -->
+  <div class="floating-btns">
+    <button class="floating-btn scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="floating-btn chat-btn">💬</button>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Simulate progress animation
+    let progress = 0;
+    const progressFill = document.getElementById('genProgress');
+    const progressPercent = document.getElementById('genPercent');
+
+    function simulateProgress() {
+      if (progress < 95) {
+        progress += Math.random() * 3;
+        if (progress > 95) progress = 95;
+        progressFill.style.width = progress + '%';
+        progressPercent.textContent = Math.round(progress) + '%';
+        setTimeout(simulateProgress, 800 + Math.random() * 2000);
+      }
+    }
+
+    // Start from 50%
+    progress = 50;
+    setTimeout(simulateProgress, 2000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>알잘AI - 로그인</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+</head>
+<body class="page-login">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-logo">
+        <span class="logo-text">알잘AI</span>
+        <button class="sidebar-toggle">⬜</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">홈</span>
+        </a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom">
+      <a href="login.html" class="login-btn">
+        <span class="nav-icon">➡️</span>
+        <span class="nav-label">로그인</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="login-container">
+      <!-- Tabs -->
+      <div class="login-tabs">
+        <button class="tab active" data-tab="login">로그인</button>
+        <button class="tab" data-tab="register">회원가입</button>
+      </div>
+
+      <!-- Login Form -->
+      <div class="tab-content active" id="tab-login">
+        <button class="auth-btn email-btn">
+          <span class="auth-icon">@</span>
+          이메일로 로그인
+        </button>
+        <button class="auth-btn google-btn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="google-icon">
+          구글로 로그인
+        </button>
+      </div>
+
+      <!-- Register Form -->
+      <div class="tab-content" id="tab-register">
+        <button class="auth-btn email-btn">
+          <span class="auth-icon">@</span>
+          이메일로 회원가입
+        </button>
+        <button class="auth-btn google-btn">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="google-icon">
+          구글로 회원가입
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">환불정책 자세히 보기</a>
+        <span class="divider">|</span>
+        <a href="#">이용약관 보기</a>
+      </div>
+      <div class="footer-info">
+        <div class="footer-col">
+          <h4>알잘AI</h4>
+          <p>상호 : 주식회사 알잘</p>
+          <p>대표자명 : 신영선 이기호 이상재</p>
+          <p>사업자등록번호 : 650-88-02311</p>
+          <p>통신판매업 신고번호 : 제 2021-경기광명-2192 호</p>
+        </div>
+        <div class="footer-col">
+          <h4>회사 정보</h4>
+          <p>사업장 주소 : 경기도 광명시 일직로 43, GIDC B동 1907호 1908호 1909호</p>
+          <p>전화번호 : 070-4334-0570</p>
+          <p>이메일 : cs@alzalstudio.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>고객 지원</h4>
+          <p>평일 09:00 - 18:00</p>
+          <p>문의 : cs@alzalstudio.com</p>
+          <br>
+          <p class="copyright">Copyright &copy; 2023 상세페이지 제작</p>
+          <p class="copyright">업체 | 회사로고제작 | 콘텐츠브랜딩 | 알잘스튜디오 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

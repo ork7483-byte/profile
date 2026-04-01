@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>콘텐츠 기획안 초안 편집 - 수분크림</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-logo">
+        <span class="logo-text">알잘AI</span>
+        <button class="sidebar-toggle">⬜</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="create.html" class="nav-item active">
+          <span class="nav-icon">📄</span>
+          <span class="nav-label">상세페이지 제작</span>
+        </a>
+        <a href="studio.html" class="nav-item">
+          <span class="nav-icon">✨</span>
+          <span class="nav-label">AI 스튜디오</span>
+        </a>
+        <a href="agency.html" class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">전문가 의뢰</span>
+        </a>
+      </nav>
+      <div class="section-header">
+        <span class="nav-icon">🕐</span>
+        <span class="nav-label">작업 기록</span>
+        <span class="arrow">∨</span>
+      </div>
+      <div class="history-list">
+        <div class="history-item" style="background:#1e2128;">
+          <div class="history-name">수분크림</div>
+          <div class="history-status" style="color:#2dd4a8;">편집 중</div>
+          <div class="history-date">04월 01일</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-extras">
+        <div class="extra-item">
+          <span class="extra-icon membership-icon">👑</span>
+          <span class="nav-label">멤버십</span>
+        </div>
+        <div class="extra-item">
+          <span class="extra-icon promo-icon">🏠</span>
+          <span class="nav-label">프로모션 코드</span>
+        </div>
+      </div>
+      <div class="user-profile">
+        <div class="user-avatar">A</div>
+        <div class="user-info">
+          <div class="user-name">이승훈</div>
+          <div class="user-email">ork7483@gmail.c...</div>
+        </div>
+        <span class="user-menu">⋮</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="edit-plan-content">
+
+      <!-- Header -->
+      <div class="edit-plan-header">
+        <div>
+          <h1 class="edit-plan-title"><span class="step-badge">3단계:</span> 콘텐츠 기획안 검토 및 수정</h1>
+          <p class="edit-plan-desc">AI가 입력하신 정보를 바탕으로 콘텐츠 기획안 초안을 생성했습니다. 검토하시고 필요시 편집한 후 최종 상세 페이지 생성을 진행해주세요.</p>
+        </div>
+        <div class="edit-plan-actions">
+          <span class="autosave-badge">✓ 자동 저장 활성화됨</span>
+          <button class="save-btn">저장하기 <span class="shortcut">Ctrl+S</span></button>
+        </div>
+      </div>
+
+      <!-- Brand Color Picker -->
+      <div class="brand-color-section">
+        <label class="form-label">브랜드 포인트 컬러</label>
+        <div class="color-picker">
+          <button class="color-swatch selected" data-color="#04BFAD" style="background:#04BFAD;" title="Teal"></button>
+          <button class="color-swatch" data-color="#3B82F6" style="background:#3B82F6;" title="Blue"></button>
+          <button class="color-swatch" data-color="#8B5CF6" style="background:#8B5CF6;" title="Purple"></button>
+          <button class="color-swatch" data-color="#EF4444" style="background:#EF4444;" title="Red"></button>
+          <button class="color-swatch" data-color="#10B981" style="background:#10B981;" title="Green"></button>
+          <button class="color-swatch" data-color="#F59E0B" style="background:#F59E0B;" title="Yellow"></button>
+          <button class="color-swatch" data-color="#EC4899" style="background:#EC4899;" title="Pink"></button>
+          <button class="color-swatch" data-color="#6B7280" style="background:#6B7280;" title="Gray"></button>
+          <input type="text" class="color-hex-input" value="#04BFAD" placeholder="#04BFAD">
+        </div>
+        <p class="color-hint">최종 상세 페이지의 디자인 포인트 컬러로 사용됩니다.</p>
+      </div>
+
+      <!-- Main Layout: Editor + Section List -->
+      <div class="edit-plan-layout">
+
+        <!-- Left: Section Editor -->
+        <div class="section-editor">
+          <!-- Progress -->
+          <div class="section-progress-bar">
+            <div class="section-progress-fill" id="sectionProgress" style="width:10%"></div>
+          </div>
+          <div class="section-progress-text" id="sectionProgressText">10%</div>
+
+          <!-- Section Form -->
+          <div class="section-form" id="sectionForm">
+            <div class="form-section">
+              <label class="form-label">섹션 제목</label>
+              <input type="text" class="form-input" id="sectionTitle" value="프리미엄 히어로 – USP 한눈에" placeholder="섹션 제목을 입력하세요">
+            </div>
+
+            <div class="form-section">
+              <label class="form-label">요약</label>
+              <input type="text" class="form-input" id="sectionSummary" value="핵심 USP(30년 피부 전문가가 설계한 성분 우수 수분크림)와 고급스러운 비주얼을 결합한 첫인상 섹션" placeholder="1-2줄 요약">
+            </div>
+
+            <div class="form-section">
+              <label class="form-label">헤드 카피</label>
+              <input type="text" class="form-input" id="headCopy" value="피부 전문 30년, 처방의 정수를 담은 수분크림" placeholder="메인 헤드라인">
+            </div>
+
+            <div class="form-section">
+              <label class="form-label">서브 카피</label>
+              <input type="text" class="form-input" id="subCopy" value="과학이 설계하고, 피부가 증명합니다" placeholder="서브 카피">
+            </div>
+
+            <div class="form-section">
+              <label class="form-label">구체적 정보 <span class="label-hint">(해당 섹션을 구성하려면 필요한 모든 문구와 정보들)</span></label>
+              <textarea class="form-input" id="detailInfo" rows="4" placeholder="이 섹션에 필요한 모든 텍스트와 정보">• USP 한 줄: "피부 전문 30년 박사님이 만든 성분 – 장시간 보습·진정"
+• 제품명 + 용량 표기
+• 핵심 키워드 3~4개: 장시간 보습, 피부 진정, 노화방지, 프리미엄 성분
+• CTA 버튼: "지금 만나보기" or "특별 할인가 확인"</textarea>
+            </div>
+
+            <div class="form-section">
+              <label class="form-label">이미지 가이드 <span class="label-hint">(이미지는 무제한 옵션은 25개, 기본 옵션은 10개까지 생성됩니다)</span></label>
+              <div class="image-guide-list" id="imageGuideList">
+                <div class="image-guide-item">
+                  <input type="text" class="form-input" value="📸 투명 유리병 위 물방울이 맺힌 제품 단독 클로즈업(고해상도, 수분감 강조)">
+                  <button class="remove-btn">제거</button>
+                </div>
+                <div class="image-guide-item">
+                  <input type="text" class="form-input" value="📸 모델의 촉촉하게 빛나는 피부 클로즈업(자연광, 깨끗한 피부 결 표현)">
+                  <button class="remove-btn">제거</button>
+                </div>
+                <div class="image-guide-item">
+                  <input type="text" class="form-input" value="📸 물결이 이는 투명 수조 옆 제품 비주얼(프리미엄 무드, 반사광 활용)">
+                  <button class="remove-btn">제거</button>
+                </div>
+              </div>
+              <button class="add-item-btn" id="addImageGuide">+ 항목 추가</button>
+            </div>
+
+            <!-- Advanced Settings (collapsible) -->
+            <div class="advanced-toggle" id="advancedToggle">
+              <button class="advanced-toggle-btn">
+                ⚙️ 고급 설정 <span class="adv-arrow">∨</span>
+              </button>
+            </div>
+
+            <div class="advanced-settings" id="advancedSettings">
+              <div class="form-section">
+                <label class="form-label">카피 설명</label>
+                <input type="text" class="form-input" value="첫 화면에서 USP를 직관적으로 전달, 감성적 서브 카피로 신뢰 + 호기심 유도">
+              </div>
+
+              <div class="adv-group">
+                <div class="adv-group-title">디자인 가이드</div>
+                <div class="form-section">
+                  <label class="form-label">시각적 구성</label>
+                  <textarea class="form-input" rows="2">풀-블리드 히어로 이미지 위 텍스트 오버레이, 제품 중앙 배치</textarea>
+                </div>
+                <div class="form-section">
+                  <label class="form-label">디자인 컨셉</label>
+                  <textarea class="form-input" rows="2">고급스러운 다크 톤 배경 + 수분감 표현 라이팅</textarea>
+                </div>
+                <div class="form-section">
+                  <label class="form-label">정보 배치</label>
+                  <textarea class="form-input" rows="2">상단 70% 비주얼, 하단 30% 카피 + CTA</textarea>
+                </div>
+                <div class="form-section">
+                  <label class="form-label">시각적 흐름</label>
+                  <textarea class="form-input" rows="2">시선: 제품 이미지 → 헤드 카피 → 서브 카피 → CTA 버튼</textarea>
+                </div>
+                <div class="form-section">
+                  <label class="form-label">명확성</label>
+                  <textarea class="form-input" rows="2">핵심 USP가 3초 이내 파악 가능하도록 헤드 카피 폰트 크기 강조</textarea>
+                </div>
+              </div>
+
+              <div class="adv-group">
+                <div class="adv-group-title">설득 포인트</div>
+                <div class="form-section">
+                  <label class="form-label">무엇을</label>
+                  <input type="text" class="form-input" value="30년 전문성 → 성분 우수성 → 장시간 보습·진정 효과">
+                </div>
+                <div class="form-section">
+                  <label class="form-label">어떻게</label>
+                  <input type="text" class="form-input" value="권위(30년 피부 전문) + 감각적 비주얼(수분감) + 명확한 CTA">
+                </div>
+              </div>
+
+              <div class="adv-group">
+                <div class="adv-group-title">반박 처리</div>
+                <div class="image-guide-list" id="rebuttalList">
+                  <div class="image-guide-item">
+                    <input type="text" class="form-input" value="가격이 비쌀까?: '런칭 특가' 뱃지로 가격 저항 사전 완화.">
+                    <button class="remove-btn">제거</button>
+                  </div>
+                  <div class="image-guide-item">
+                    <input type="text" class="form-input" value="효과가 확실할까?: 하단 섹션에서 사용감/후기/테스트 계획 및 정책으로 보완 안내 예고.">
+                    <button class="remove-btn">제거</button>
+                  </div>
+                </div>
+                <button class="add-item-btn">+ 항목 추가</button>
+              </div>
+
+              <div class="form-section">
+                <label class="form-label">프레임워크</label>
+                <input type="text" class="form-input" value="CLARE - C(Concise), MAVEN - M(Mystery & Need)">
+              </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="section-nav">
+              <button class="prev-btn" id="prevSection">← 이전</button>
+              <button class="save-draft-btn">초안 저장</button>
+              <button class="next-btn" id="nextSection">다음 →</button>
+            </div>
+          </div>
+
+          <!-- Final CTA -->
+          <div class="final-generate">
+            <p class="final-generate-ready">콘텐츠 기획안 생성 준비 완료</p>
+            <button class="final-generate-btn" id="finalGenerateBtn">✨ 기획안 확정 및 상세 페이지 생성</button>
+            <p class="final-generate-note">이 과정은 2-3분 정도 소요될 수 있습니다</p>
+          </div>
+        </div>
+
+        <!-- Right: Section List Sidebar -->
+        <aside class="section-list-sidebar">
+          <div class="section-list-header">
+            <button class="section-list-action-btn add-section-btn">+ 추가</button>
+            <button class="section-list-action-btn delete-section-btn">삭제</button>
+          </div>
+          <div class="section-list" id="sectionList">
+            <div class="section-list-item active" data-index="0">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">01. 프리미엄 히어로 – USP 한눈에</span>
+            </div>
+            <div class="section-list-item" data-index="1">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">02. 공감 – 왜 금방 건조해질까요?</span>
+            </div>
+            <div class="section-list-item" data-index="2">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">03. 브랜드·연구 스토리 – 30년의 설계</span>
+            </div>
+            <div class="section-list-item" data-index="3">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">04. USP – 성분 우수성 중심의 차별화</span>
+            </div>
+            <div class="section-list-item" data-index="4">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">05. 체감 변화 – 보습 지속·진정</span>
+            </div>
+            <div class="section-list-item" data-index="5">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">06. 텍스처·사용감 – 산뜻한 흡수, 쫀쫀한 수분막</span>
+            </div>
+            <div class="section-list-item" data-index="6">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">07. 사용법 – 아침·밤 루틴 튜토리얼</span>
+            </div>
+            <div class="section-list-item" data-index="7">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">08. 실사용 순간 – UGC & SNS 신뢰</span>
+            </div>
+            <div class="section-list-item" data-index="8">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">09. 신뢰·정책 – 테스트·성분·FAQ</span>
+            </div>
+            <div class="section-list-item" data-index="9">
+              <span class="drag-handle">⠿</span>
+              <span class="section-list-name">10. 오퍼·CTA – 런칭 특가 & 세트 제안</span>
+            </div>
+          </div>
+          <p class="drag-hint">드래그하여 순서 변경</p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Credit Confirmation Modal -->
+    <div class="modal-overlay" id="creditModal" style="display:none;">
+      <div class="modal-card">
+        <h3 class="modal-title">크레딧 사용 확인</h3>
+        <div class="modal-badge">무제한 구독권 사용 중</div>
+        <p class="modal-desc">크레딧 차감 없이 상세페이지를 생성할 수 있습니다.</p>
+        <div class="modal-credit">
+          <span class="credit-amount">0 크레딧</span>
+          <span class="credit-label">차감됩니다</span>
+        </div>
+        <p class="modal-note">무제한으로 상세페이지를 생성하세요!</p>
+        <div class="modal-actions">
+          <button class="modal-cancel-btn">취소</button>
+          <button class="modal-confirm-btn">확인 및 생성</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">환불정책 자세히 보기</a>
+        <span class="divider">|</span>
+        <a href="#">이용약관 보기</a>
+      </div>
+      <div class="footer-info">
+        <div class="footer-col">
+          <h4>알잘AI</h4>
+          <p>상호 : 주식회사 알잘</p>
+          <p>대표자명 : 신영선 이기호 이상재</p>
+          <p>사업자등록번호 : 650-88-02311</p>
+          <p>통신판매업 신고번호 : 제 2021-경기광명-2192 호</p>
+        </div>
+        <div class="footer-col">
+          <h4>회사 정보</h4>
+          <p>사업장 주소 : 경기도 광명시 일직로 43, GIDC B동 1907호 1908호 1909호</p>
+          <p>전화번호 : 070-4334-0570</p>
+          <p>이메일 : cs@alzalstudio.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>고객 지원</h4>
+          <p>평일 09:00 - 18:00</p>
+          <p>문의 : cs@alzalstudio.com</p>
+          <br>
+          <p class="copyright">Copyright &copy; 2023 상세페이지 제작</p>
+          <p class="copyright">업체 | 회사로고제작 | 콘텐츠브랜딩 | 알잘스튜디오 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating Buttons -->
+  <div class="floating-btns">
+    <button class="floating-btn scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="floating-btn chat-btn">💬</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
