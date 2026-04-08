@@ -43,22 +43,6 @@
       overflow-x: hidden;
     }
 
-    .bg-video {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    .bg-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      z-index: 0;
-    }
-
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--gray-700); border-radius: 2px; }
@@ -124,22 +108,13 @@
 
     /* ─── Hero ─── */
     .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 60px 60px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-body {
       display: grid;
       grid-template-columns: 1fr 400px;
       gap: 60px;
-      align-items: stretch;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px 60px;
     }
 
     .hero-info {
@@ -148,102 +123,56 @@
       gap: 0;
     }
 
-    .hero-header {
-      margin-bottom: 40px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 32px;
       opacity: 0;
       animation: slideUp 0.8s ease 0.2s forwards;
     }
 
-    .hero-header h2 {
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      color: var(--white);
-      margin: 0;
-    }
-
-    .hero-header p {
-      font-size: 0.9rem;
-      color: var(--gray-500);
-      margin-top: 16px;
-    }
-
-    .hero-info {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
     .hero-name {
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
       color: var(--white);
-      margin-bottom: 2px;
+      margin-bottom: 8px;
       opacity: 0;
       animation: slideUp 0.8s ease 0.3s forwards;
     }
 
     .hero-name-en {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
       color: var(--gray-500);
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
       opacity: 0;
       animation: slideUp 0.8s ease 0.4s forwards;
     }
 
     .hero-title {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--gray-300);
-      line-height: 2.1;
-      max-width: 480px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-100);
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
       opacity: 0;
       animation: slideUp 0.8s ease 0.5s forwards;
     }
 
-    .hero-career-label {
-      width: 100%;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--gray-500);
-      margin-bottom: 10px;
-    }
-
-    .hero-career {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
+    .hero-bio {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--gray-300);
+      line-height: 1.9;
+      max-width: 440px;
       opacity: 0;
       animation: slideUp 0.8s ease 0.6s forwards;
-    }
-
-    .hero-career span {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 100px;
-      background: rgba(59,130,246,0.1);
-      border: 1px solid rgba(59,130,246,0.2);
-      color: #93c5fd;
-      letter-spacing: 0.01em;
     }
 
     /* ─── Photo ─── */
@@ -425,11 +354,11 @@
 
     /* ─── Business Section (Beige) ─── */
     .biz-section {
-      background: transparent;
+      background: var(--beige);
+      border-radius: var(--radius);
+      margin: 40px 60px;
       padding: 80px 60px;
-      color: var(--white);
-      position: relative;
-      z-index: 1;
+      color: var(--black);
     }
 
     .biz-inner {
@@ -439,9 +368,6 @@
 
     .biz-header {
       margin-bottom: 64px;
-      text-align: center;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .biz-header-label {
@@ -458,14 +384,14 @@
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 1.1;
-      color: var(--white);
+      color: var(--black);
     }
 
     .biz-header p {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       color: var(--gray-500);
       margin-top: 16px;
-      text-align: center;
+      max-width: 420px;
     }
 
     /* ─── Business Cards ─── */
@@ -476,15 +402,12 @@
     }
 
     .biz-card {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px 28px 28px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      cursor: pointer;
+      flex-direction: column;
+      transition: transform var(--transition);
       opacity: 0;
       transform: translateY(20px);
     }
@@ -495,319 +418,124 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .biz-card-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.6s ease;
+    .biz-card:hover {
+      transform: translateY(-6px);
     }
 
-    .biz-card:hover .biz-card-bg {
-      transform: scale(1.05);
+    .card-emoji {
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
 
-    .biz-card-number {
-      display: none;
-    }
-
-    .biz-card-title {
-      display: none;
-    }
-
-    .biz-card-wrap {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .biz-card-wrap:hover {
-      border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-
-    .biz-card-wrap .biz-card {
-      border-radius: 0;
-    }
-
-    .biz-card-info {
-      padding: 16px 20px 20px;
-      text-align: center;
-    }
-
-    .biz-card-info-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .biz-card-info-desc {
-      font-size: 0.8rem;
+    .card-category {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: var(--gray-500);
-      line-height: 1.7;
+      margin-bottom: 8px;
     }
 
-    /* ─── Journey Section ─── */
-    .journey-section {
-      padding: 80px 60px;
-      background: transparent;
-      color: var(--white);
-      position: relative;
-      z-index: 1;
-    }
-
-    .journey-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .journey-header {
-      text-align: center;
-      margin-bottom: 60px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .journey-header h2 {
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      color: var(--white);
-      margin: 0;
-    }
-
-    .journey-header p {
-      font-size: 1.1rem;
-      color: var(--gray-500);
-      margin-top: 16px;
-    }
-
-    /* Timeline - center line, alternating left/right */
-    .timeline {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(255,255,255,0.1);
-      transform: translateX(-50%);
-    }
-
-    .timeline-block {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 200px;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .timeline-block.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .timeline-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 50%;
-      top: 8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #3b82f6;
-      box-shadow: 0 0 0 4px var(--black);
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-
-    .timeline-spacer {
-      width: 42%;
-    }
-
-    .timeline-content {
-      width: 42%;
-    }
-
-    /* Left side (even: 0, 2, 4...) - content on right */
-    .timeline-block.left .timeline-content {
-      text-align: left;
-      padding-left: 36px;
-    }
-
-    .timeline-block.left .timeline-spacer {
-      order: 0;
-    }
-
-    .timeline-block.left .timeline-content {
-      order: 1;
-    }
-
-    /* Right side (odd: 1, 3, 5...) - content on left */
-    .timeline-block.right .timeline-content {
-      text-align: right;
-      padding-right: 36px;
-      order: 0;
-    }
-
-    .timeline-block.right .timeline-spacer {
-      order: 1;
-    }
-
-    .timeline-year {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #3b82f6;
-      margin-bottom: 4px;
-    }
-
-    .timeline-title {
+    .card-name {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
+      color: var(--black);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
 
-    .timeline-desc {
+    .card-desc {
       font-size: 0.85rem;
-      font-weight: 500;
       color: var(--gray-500);
-      line-height: 1.7;
+      line-height: 1.75;
+      flex: 1;
       margin-bottom: 24px;
     }
 
-    .timeline-projects {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .timeline-project {
-      display: flex;
+    .card-link {
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
-    }
-
-    .timeline-block.right .timeline-project {
-      flex-direction: row-reverse;
-    }
-
-    .timeline-block.right .timeline-projects {
-      align-items: flex-end;
-    }
-
-    .timeline-project-thumb {
-      width: 80px;
-      height: 80px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--gray-900);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .timeline-project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .timeline-project:hover .timeline-project-thumb img {
-      transform: scale(1.1);
-    }
-
-    .timeline-thumb-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: var(--gray-700);
-      background: var(--gray-900);
-    }
-
-    .timeline-project-name {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .timeline-project-date {
-      font-size: 0.72rem;
+      gap: 6px;
+      font-size: 0.78rem;
       font-weight: 600;
-      color: #3b82f6;
-      margin-top: 2px;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: gap var(--transition);
     }
 
-    /* Mobile: single column */
-    @media (max-width: 900px) {
-      .journey-section {
-        padding: 60px 24px;
-      }
+    .card-link:hover {
+      gap: 10px;
+    }
 
-      .timeline::before {
-        left: 4px;
-      }
-
-      .timeline-block {
-        display: block;
-        padding-left: 32px;
-        margin-bottom: 64px;
-      }
-
-      .timeline-dot {
-        left: 0;
-        transform: none;
-      }
-
-      .timeline-spacer {
-        display: none;
-      }
-
-      .timeline-content {
-        width: 100%;
-      }
-
-      .timeline-block.right .timeline-content,
-      .timeline-block.left .timeline-content {
-        text-align: left;
-        padding: 0;
-      }
-
-      .timeline-block.right .timeline-project {
-        flex-direction: row;
-      }
-
-      .timeline-block.right .timeline-projects {
-        align-items: flex-start;
-      }
+    .card-link svg {
+      width: 14px;
+      height: 14px;
     }
 
     /* ─── Portfolio Section ─── */
+    @keyframes shimmer-move {
+      0% { transform: translateX(-100%) rotate(15deg); }
+      100% { transform: translateX(300%) rotate(15deg); }
+    }
+
+    @keyframes glow-drift {
+      0%, 100% { opacity: 0.3; transform: translate(0, 0) scale(1); }
+      50% { opacity: 0.5; transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    @keyframes glow-drift-2 {
+      0%, 100% { opacity: 0.25; transform: translate(0, 0) scale(1); }
+      50% { opacity: 0.45; transform: translate(-40px, 15px) scale(1.15); }
+    }
+
     .portfolio-section {
       max-width: 100%;
-      padding: 60px 60px 80px;
-      background: transparent;
+      padding: 0 60px 80px;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+      animation: shimmer-move 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .portfolio-bg-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .portfolio-bg-glow.glow-1 {
+      width: 400px;
+      height: 400px;
+      top: 10%;
+      left: -5%;
+      background: rgba(237, 232, 228, 0.06);
+      animation: glow-drift 12s ease-in-out infinite;
+    }
+
+    .portfolio-bg-glow.glow-2 {
+      width: 350px;
+      height: 350px;
+      bottom: 15%;
+      right: -5%;
+      background: rgba(255, 255, 255, 0.04);
+      animation: glow-drift-2 15s ease-in-out infinite;
+    }
+
+    .portfolio-section > * {
       position: relative;
       z-index: 1;
     }
@@ -821,18 +549,19 @@
 
     .portfolio-header {
       text-align: center;
-      margin: 0 auto 40px;
-      padding-bottom: 24px;
+      margin: 0 auto 20px;
+      padding: 0 0 24px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .portfolio-header h2 {
-      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 900;
       letter-spacing: -0.04em;
-      line-height: 1.1;
+      line-height: 1.0;
       color: var(--white);
       margin: 0;
+      padding: 0;
     }
 
     .portfolio-header p {
@@ -1291,109 +1020,90 @@
       }
     }
 
-    /* ─── Footer ─── */
+    /* ─── Footer (Beige) ─── */
     .footer {
-      background: transparent;
-      padding: 10px 30px 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 25px;
-      padding: 4vw 30px 0;
-      text-align: center;
-      color: var(--white);
+      background: var(--beige);
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin: 0 60px;
+      padding: 80px 60px 40px;
+      color: var(--black);
     }
 
     .footer-cta {
-      font-size: 7vw;
+      font-size: clamp(2.5rem, 5vw, 5rem);
       font-weight: 900;
-      color: var(--white);
-      text-decoration: none;
-      display: inline-flex;
-      overflow: hidden;
-      position: relative;
-      line-height: 1;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--black);
       margin-bottom: 16px;
-      letter-spacing: -0.03em;
-    }
-
-    .footer-cta span {
-      display: inline-block;
-      transition: transform 0.55s cubic-bezier(0.25, 1, 0.33, 1);
-    }
-
-    .footer-cta:hover span {
-      transform: translateY(-100%);
-    }
-
-    .footer-cta span::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 100%;
-      left: 0;
+      text-decoration: none;
       display: block;
+      position: relative;
+    }
+
+    .footer-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--black);
+      transition: width 0.6s ease;
+    }
+
+    .footer-cta:hover::after {
+      width: 100%;
     }
 
     .footer-email {
-      font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+      font-size: 1rem;
       color: var(--gray-500);
-      text-align: center;
+      margin-bottom: 60px;
     }
 
-    .footer-social {
+    .footer-links {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
+      gap: 24px;
+      margin-bottom: 60px;
     }
 
-    .footer-social a {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--gray-700);
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--gray-500);
       text-decoration: none;
       position: relative;
-      transition: color var(--transition);
     }
 
-    .footer-social a::after {
+    .footer-links a::after {
       content: '';
       position: absolute;
       bottom: -2px;
       left: 0;
       width: 100%;
       height: 1px;
-      background: var(--gray-700);
+      background: var(--gray-500);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform var(--transition);
     }
 
-    .footer-social a:hover::after {
+    .footer-links a:hover::after {
       transform: scaleX(1);
       transform-origin: left;
     }
 
-    .footer-social a:hover {
-      color: var(--black);
-    }
-
-    .footer-spacer {
-      height: 3vw;
-    }
-
     .footer-bottom {
-      padding: 16px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--beige-dark);
     }
 
     .footer-copy {
       font-size: 0.72rem;
-      color: var(--gray-700);
+      color: var(--gray-500);
     }
 
     /* ─── Animations ─── */
@@ -1455,7 +1165,8 @@
       .scroll-indicator { padding: 0 24px 40px; }
 
       .biz-section {
-        padding: 60px 24px;
+        margin: 20px 16px;
+        padding: 48px 24px;
       }
 
       .biz-cards {
@@ -1463,246 +1174,49 @@
       }
 
       .footer {
-        padding: 20px 16px;
-      }
-      .footer-card {
+        margin: 0 16px;
         padding: 48px 24px 32px;
-        border-radius: 20px;
       }
     }
-
-
-    /* ─── Title Shadow Switcher ─── */
-    .title-shadow-switcher {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      gap: 6px;
-      z-index: 100;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(12px);
-      padding: 8px 12px;
-      border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .ts-btn {
-      font-family: var(--font);
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: transparent;
-      color: var(--gray-500);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .ts-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
-    .ts-btn.active { background: var(--white); color: var(--black); border-color: var(--white); }
-
-    /* Shared selector for all section titles */
-    .section-title {
-      transition: text-shadow 0.5s ease;
-    }
-
-    /* S1: Soft Glow */
-    body.ts-1 .section-title {
-      text-shadow: 0 0 20px rgba(255,255,255,0.15), 0 0 40px rgba(255,255,255,0.05);
-    }
-
-    /* S2: Hard Drop */
-    body.ts-2 .section-title {
-      text-shadow: 3px 3px 0 rgba(255,255,255,0.08), 6px 6px 0 rgba(255,255,255,0.03);
-    }
-
-    /* S3: Blue Neon */
-    body.ts-3 .section-title {
-      text-shadow: 0 0 10px rgba(59,130,246,0.4), 0 0 30px rgba(59,130,246,0.15), 0 0 60px rgba(59,130,246,0.05);
-    }
-
-    /* S4: Emboss */
-    body.ts-4 .section-title {
-      text-shadow: 0 1px 0 rgba(255,255,255,0.1), 0 -1px 0 rgba(0,0,0,0.5), 0 4px 8px rgba(0,0,0,0.4);
-    }
-
-    /* S5: Long Shadow */
-    body.ts-5 .section-title {
-      text-shadow:
-        1px 1px 0 rgba(255,255,255,0.05),
-        2px 2px 0 rgba(255,255,255,0.04),
-        3px 3px 0 rgba(255,255,255,0.03),
-        4px 4px 0 rgba(255,255,255,0.02),
-        5px 5px 0 rgba(255,255,255,0.01),
-        6px 6px 12px rgba(0,0,0,0.4);
-    }
-
   </style>
 </head>
 <body>
-  <video autoplay loop playsinline muted class="bg-video">
-    <source src="https://blurblur.s3.ap-northeast-2.amazonaws.com/production/media/videos/ui/login_bg.mp4" type="video/mp4" />
-  </video>
-  <div class="bg-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="메인 내비게이션">
+    <a href="#" class="nav-logo">Profile</a>
+    <ul class="nav-links">
+      <li><a href="#business">Business</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero -->
   <section class="hero" aria-label="프로필 소개">
-    <div class="hero-header">
-      <h2 class="section-title">1. 누구인가요?</h2>
+    <div class="hero-info">
+      <p class="hero-label">Lecture Profile</p>
+      <h1 class="hero-name">홍길동</h1>
+      <p class="hero-name-en">HONG GILDONG</p>
+      <p class="hero-title">마케팅 디렉터 &middot; 브랜드 전략가 &middot; 강사</p>
+      <p class="hero-bio">
+        10년 이상의 디지털 마케팅 실무 경험을 바탕으로 브랜드 전략과 콘텐츠 기획을 가르칩니다.
+        실전 사례 중심의 강의로 수강생들이 현장에서 바로 적용할 수 있는 인사이트를 전달합니다.
+      </p>
     </div>
-    <div class="hero-body">
-      <div class="hero-info">
-        <h1 class="hero-name">이승훈</h1>
-        <p class="hero-name-en">LEE SEUNGHUN</p>
-        <p class="hero-title">안녕하세요! AI디렉터 이승훈입니다. AI의 가장 큰 가치는 '무엇이든 만들 수 있다는 것'입니다! 다만 통제가 어렵고 정해진 방법이 없어서 실무 적용이 쉽지 않죠. 다양한 산업군에서 직접 AI를 활용해본 경험을 바탕으로, 최대한 쉽고 단순하게 — 하지만 가장 전문적인 AI활용법을 전해드리겠습니다!</p>
-        <div class="hero-career">
-          <p class="hero-career-label">대표 프로젝트</p>
-          <span>LG전자 김치톡톡 AI광고 제작</span>
-          <span>삼성전자 삼성케어 AI광고 제작</span>
-          <span>현대자동차 미래자동차 부서 AI 기술이전</span>
-          <span>현대자동차 제네시스 Instagram 콘텐츠 제작</span>
-        </div>
-      </div>
-      <div class="hero-photo" role="img" aria-label="프로필 사진">
-        <img src="profile.jpg" alt="프로필 사진" loading="eager" />
-      </div>
+    <div class="hero-photo" role="img" aria-label="프로필 사진">
+      <img src="profile.jpg" alt="프로필 사진" loading="eager" />
     </div>
   </section>
 
 
-
-  <!-- Journey -->
-  <section class="journey-section" aria-label="Our Journey">
-    <div class="journey-inner">
-      <div class="journey-header reveal">
-        <h2 class="section-title">2. 어떤 일을 했나요?</h2>
-      </div>
-
-      <div class="timeline">
-        <!-- 2024 - left (content on right) -->
-        <div class="timeline-block left">
-          <div class="timeline-spacer"></div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">2024</div>
-            <div class="timeline-title">Business Expansion</div>
-            <div class="timeline-desc">패션·전자·모빌리티까지, 핵심 산업 전반에서 AI를 활용해 프로젝트를 진행했습니다.</div>
-            <div class="timeline-projects">
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/1.webp" alt="삼성카드 x BMW MINI" loading="lazy" /></div>
-                <div><div class="timeline-project-name">삼성카드 x BMW MINI</div><div class="timeline-project-date">&lt;2024.06&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/9.webp" alt="LG전자" loading="lazy" /></div>
-                <div><div class="timeline-project-name">LG전자</div><div class="timeline-project-date">&lt;2024.07&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/2.webp" alt="SK하이닉스" loading="lazy" /></div>
-                <div><div class="timeline-project-name">SK하이닉스</div><div class="timeline-project-date">&lt;2024.08&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/10.webp" alt="삼성카드 x 카카오 AI 해커톤" loading="lazy" /></div>
-                <div><div class="timeline-project-name">삼성카드 x 카카오 AI 해커톤</div><div class="timeline-project-date">&lt;2024.08&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/3.webp" alt="루이까또즈" loading="lazy" /></div>
-                <div><div class="timeline-project-name">루이까또즈</div><div class="timeline-project-date">&lt;2024.11&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/4.webp" alt="폭스바겐" loading="lazy" /></div>
-                <div><div class="timeline-project-name">폭스바겐</div><div class="timeline-project-date">&lt;2024.12&gt;</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2025 - right (content on left) -->
-        <div class="timeline-block right">
-          <div class="timeline-content">
-            <div class="timeline-year">2025</div>
-            <div class="timeline-title">Global Stage</div>
-            <div class="timeline-desc">업계를 선도하는 기술력으로 글로벌·대기업 프로젝트를 꾸준히 수행하고 있습니다.</div>
-            <div class="timeline-projects">
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/5.webp" alt="나이키" loading="lazy" /></div>
-                <div><div class="timeline-project-name">나이키</div><div class="timeline-project-date">&lt;2025.01&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/6.webp" alt="롯데리아" loading="lazy" /></div>
-                <div><div class="timeline-project-name">롯데리아</div><div class="timeline-project-date">&lt;2025.02&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/12.webp" alt="삼성카드" loading="lazy" /></div>
-                <div><div class="timeline-project-name">삼성카드</div><div class="timeline-project-date">&lt;2025.03&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/13.webp" alt="대한체육회" loading="lazy" /></div>
-                <div><div class="timeline-project-name">대한체육회</div><div class="timeline-project-date">&lt;2025.04&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/14.webp" alt="패스트캠퍼스" loading="lazy" /></div>
-                <div><div class="timeline-project-name">패스트캠퍼스</div><div class="timeline-project-date">&lt;2025.06&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/15.webp" alt="현대자동차" loading="lazy" /></div>
-                <div><div class="timeline-project-name">현대자동차</div><div class="timeline-project-date">&lt;2025.10&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">LG전자</div><div class="timeline-project-date">&lt;2025.11&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">오르시떼</div><div class="timeline-project-date">&lt;2025.12&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/7.webp" alt="삼성전자" loading="lazy" /></div>
-                <div><div class="timeline-project-name">삼성전자</div><div class="timeline-project-date">&lt;2025.12&gt;</div></div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-spacer"></div>
-        </div>
-
-        <!-- 2026 - left (content on right) -->
-        <div class="timeline-block left">
-          <div class="timeline-spacer"></div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-year">2026</div>
-            <div class="timeline-title">New Chapter</div>
-            <div class="timeline-desc">강의와 신규 서비스 런칭으로 새로운 영역을 개척하고 있습니다.</div>
-            <div class="timeline-projects">
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">SELECT AI MODEL 런칭</div><div class="timeline-project-date">&lt;2026.01&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">오르시떼</div><div class="timeline-project-date">&lt;2026.01&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">인천대 강의</div><div class="timeline-project-date">&lt;2026.01&gt;</div></div>
-              </div>
-              <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">동아제약 강의</div><div class="timeline-project-date">&lt;2026.03&gt;</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Portfolio -->
   <section class="portfolio-section" id="portfolio" aria-label="포트폴리오">
+    <div class="portfolio-bg-glow glow-1"></div>
+    <div class="portfolio-bg-glow glow-2"></div>
     <div class="portfolio-header reveal">
-      <h2 class="section-title">3. 결과물이 궁금해요!</h2>
+      <h2>PORTFOLIO</h2>
     </div>
 
     <div class="portfolio-grid">
@@ -1836,39 +1350,53 @@
   <section class="biz-section" id="business" aria-label="운영 중인 사업체">
     <div class="biz-inner">
       <div class="biz-header reveal">
-        <h2 class="section-title">4. 다른 것도 하나요?</h2>
+        <p class="biz-header-label">Portfolio</p>
+        <h2>운영 중인 사업체</h2>
+        <p>직접 창업하고 운영하며 쌓은 실전 경험을 강의에 녹여냅니다.</p>
       </div>
 
       <div class="biz-cards">
-        <a class="biz-card-wrap" href="https://crawled.vercel.app/" target="_blank" rel="noopener">
-          <div class="biz-card">
-            <div class="biz-card-bg" style="background-image:url('images/startup-select.png')"></div>
-          </div>
-          <div class="biz-card-info">
-            <div class="biz-card-info-name">AI 광고 제작</div>
-            <div class="biz-card-info-desc">AI 기반 광고 비주얼 제작</div>
-          </div>
-        </a>
+        <article class="biz-card">
+          <div class="card-emoji">&#x1F680;</div>
+          <div class="card-category">마케팅 에이전시</div>
+          <h3 class="card-name">어반 마케팅</h3>
+          <p class="card-desc">
+            중소기업과 스타트업을 위한 디지털 마케팅 풀서비스 에이전시.
+            브랜드 기획부터 SNS 운영, 퍼포먼스 광고까지 원스톱으로 제공합니다.
+          </p>
+          <a href="#" class="card-link" aria-label="어반 마케팅 웹사이트 방문">
+            Visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
 
-        <a class="biz-card-wrap" href="https://www.selectaimodel.co.kr/" target="_blank" rel="noopener">
-          <div class="biz-card">
-            <div class="biz-card-bg" style="background-image:url('images/startup-model.png')"></div>
-          </div>
-          <div class="biz-card-info">
-            <div class="biz-card-info-name">AI 모델 에이전시</div>
-            <div class="biz-card-info-desc">AI 기반 모델 매칭 및 에이전시 서비스</div>
-          </div>
-        </a>
+        <article class="biz-card">
+          <div class="card-emoji">&#x1F3AC;</div>
+          <div class="card-category">콘텐츠 스튜디오</div>
+          <h3 class="card-name">크리에이티브랩</h3>
+          <p class="card-desc">
+            유튜브 및 숏폼 콘텐츠 전문 제작 스튜디오.
+            기획, 촬영, 편집을 내재화하여 빠르고 일관된 퀄리티의 영상을 제작합니다.
+          </p>
+          <a href="#" class="card-link" aria-label="크리에이티브랩 웹사이트 방문">
+            Visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
 
-        <a class="biz-card-wrap" href="https://project113-azure.vercel.app/" target="_blank" rel="noopener">
-          <div class="biz-card">
-            <div class="biz-card-bg" style="background-image:url('images/startup-web.png')"></div>
-          </div>
-          <div class="biz-card-info">
-            <div class="biz-card-info-name">웹 에이전시</div>
-            <div class="biz-card-info-desc">웹사이트 기획·디자인·개발 풀서비스</div>
-          </div>
-        </a>
+        <article class="biz-card">
+          <div class="card-emoji">&#x1F4DA;</div>
+          <div class="card-category">온라인 교육</div>
+          <h3 class="card-name">마케팅 스쿨</h3>
+          <p class="card-desc">
+            실무자 중심의 마케팅 온라인 강의 플랫폼.
+            현직 마케터들이 강사로 참여해 이론보다 현장에서 쓰이는 기술을 가르칩니다.
+          </p>
+          <a href="#" class="card-link" aria-label="마케팅 스쿨 웹사이트 방문">
+            Visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
       </div>
     </div>
   </section>
@@ -1919,21 +1447,17 @@
     <div class="pf-lightbox-counter" id="lbCounter"></div>
   </div>
 
-  <!-- Footer -->
-  <!-- Title Shadow Switcher -->
-  <div class="title-shadow-switcher">
-    <button class="ts-btn" data-ts="">OFF</button>
-    <button class="ts-btn" data-ts="ts-1">S1</button>
-    <button class="ts-btn" data-ts="ts-2">S2</button>
-    <button class="ts-btn" data-ts="ts-3">S3</button>
-    <button class="ts-btn" data-ts="ts-4">S4</button>
-    <button class="ts-btn" data-ts="ts-5">S5</button>
-  </div>
-
+  <!-- Footer (Beige) -->
   <footer class="footer" id="contact" role="contentinfo">
-    <div class="footer-card">
-      <a href="mailto:ork7483@gmail.com" class="footer-cta"><span data-text="Contact Us">Contact Us</span></a>
-      <p class="footer-email">ork7483@gmail.com</p>
+    <a href="mailto:ork7483@gmail.com" class="footer-cta">Contact</a>
+    <p class="footer-email">ork7483@gmail.com</p>
+    <div class="footer-links">
+      <a href="#">Youtube</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026. All rights reserved.</span>
+      <span class="footer-copy">홍길동</span>
     </div>
   </footer>
 
@@ -2176,22 +1700,8 @@
         el.addEventListener('click', function() { openModal(el.dataset.project); });
       });
 
-      // ─── Title Shadow Switcher ───
-      (function() {
-        var tsBtns = document.querySelectorAll('.ts-btn');
-        var tsStyles = ['ts-1','ts-2','ts-3','ts-4','ts-5'];
-        tsBtns.forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            tsStyles.forEach(function(s) { document.body.classList.remove(s); });
-            if (btn.dataset.ts) document.body.classList.add(btn.dataset.ts);
-            tsBtns.forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-          });
-        });
-      })();
-
       // ─── Scroll Reveal ───
-      var targets = document.querySelectorAll('.reveal, .career-item, .biz-card, .portfolio-item, .timeline-block');
+      var targets = document.querySelectorAll('.reveal, .career-item, .biz-card, .portfolio-item');
       var i = 0;
       targets.forEach(function (el, idx) {
         el.style.transitionDelay = (idx % 4) * 0.1 + 's';
@@ -2208,7 +1718,6 @@
 
       targets.forEach(function (el) { observer.observe(el); });
     })();
-
   </script>
 </body>
 </html>
