@@ -246,6 +246,12 @@
       letter-spacing: 0.01em;
     }
 
+    .hero-career span.yellow {
+      background: rgba(234,179,8,0.15);
+      border-color: rgba(234,179,8,0.3);
+      color: #fbbf24;
+    }
+
     /* ─── Photo ─── */
     .hero-photo {
       border-radius: var(--radius);
@@ -922,6 +928,7 @@
       font-weight: 800;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       padding-bottom: 6px;
+      text-align: center;
     }
 
     .portfolio-date {
@@ -930,23 +937,32 @@
       font-weight: 700;
       color: var(--beige);
       letter-spacing: 0.03em;
+      text-align: center;
     }
 
     /* ─── Portfolio Year Divider ─── */
     .portfolio-year-divider {
       grid-column: 1 / -1;
       padding: 60px 0 20px;
+      text-align: center;
     }
 
     .portfolio-year-divider:first-child {
-      padding-top: 0;
+      padding-top: 40px;
     }
 
     .portfolio-year-divider .year-label {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      display: inline-block;
+      font-size: 2rem;
       font-weight: 900;
-      letter-spacing: -0.03em;
+      letter-spacing: 0.02em;
       color: var(--white);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 10px 32px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       margin-bottom: 4px;
     }
 
@@ -1556,7 +1572,7 @@
       <div class="hero-info">
         <h1 class="hero-name">이승훈</h1>
         <p class="hero-name-en">LEE SEUNGHUN</p>
-        <p class="hero-title">안녕하세요! AI디렉터 이승훈입니다. AI의 가장 큰 가치는 '무엇이든 만들 수 있다는 것'입니다! 다만 통제가 어렵고 정해진 방법이 없어서 실무 적용이 쉽지 않죠. 다양한 산업군에서 직접 AI를 활용해본 경험을 바탕으로, 최대한 쉽고 단순하게 — 하지만 가장 전문적인 AI활용법을 전해드리겠습니다!</p>
+        <p class="hero-title">안녕하세요. 이승훈 디렉터입니다.<br>AI는 결국 도구이고, 기능은 계속 업데이트가 됩니다. 그래서 특정 기능이나 스킬을 익히는 것 자체보다<br>A와 B를 어떻게 조합했을 때 왜 C라는 결과가 나오는지 그 작동 원리를 이해하는 것이 더 중요하다고 생각합니다.<br>이 원리는 툴이 바뀌어도 그대로 적용되고 실무에서 결과를 반복해서 만들어낼 수 있는 기준이 됩니다.<br>AI가 결과를 만들어내는 구조와 판단 기준을 공유드리겠습니다.</p>
         <div class="hero-career">
           <p class="hero-career-label">대표 프로젝트</p>
           <span>LG전자 김치톡톡 AI광고 제작</span>
@@ -1650,11 +1666,11 @@
                 <div><div class="timeline-project-name">현대자동차</div><div class="timeline-project-date">&lt;2025.10&gt;</div></div>
               </div>
               <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/portfolio/8.webp" alt="현대자동차" loading="lazy" /></div>
-                <div><div class="timeline-project-name">현대자동차</div><div class="timeline-project-date">&lt;2025.11&gt;</div></div>
+                <div class="timeline-project-thumb"><img src="images/portfolio/lg-2025.webp" alt="LG전자" loading="lazy" /></div>
+                <div><div class="timeline-project-name">LG전자</div><div class="timeline-project-date">&lt;2025.11&gt;</div></div>
               </div>
               <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
+                <div class="timeline-project-thumb"><img src="https://img.youtube.com/vi/ebxs5gK-yQY/maxresdefault.jpg" alt="오르시떼" loading="lazy" /></div>
                 <div><div class="timeline-project-name">오르시떼</div><div class="timeline-project-date">&lt;2025.12&gt;</div></div>
               </div>
               <div class="timeline-project">
@@ -1677,11 +1693,11 @@
             <div class="timeline-desc">강의와 신규 서비스 런칭으로 새로운 영역을 개척하고 있습니다.</div>
             <div class="timeline-projects">
               <div class="timeline-project">
-                <div class="timeline-project-thumb"><img src="images/startup-model.png" alt="SELECT AI MODEL 런칭" loading="lazy" /></div>
+                <div class="timeline-project-thumb"><img src="images/portfolio/select-ai-model.webp" alt="SELECT AI MODEL" loading="lazy" /></div>
                 <div><div class="timeline-project-name">SELECT AI MODEL 런칭</div><div class="timeline-project-date">&lt;2026.01&gt;</div></div>
               </div>
               <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
+                <div class="timeline-project-thumb"><img src="https://img.youtube.com/vi/hotuW3MjFSk/maxresdefault.jpg" alt="오르시떼" loading="lazy" /></div>
                 <div><div class="timeline-project-name">오르시떼</div><div class="timeline-project-date">&lt;2026.01&gt;</div></div>
               </div>
               <div class="timeline-project">
@@ -1689,8 +1705,12 @@
                 <div><div class="timeline-project-name">인천대 강의</div><div class="timeline-project-date">&lt;2026.01&gt;</div></div>
               </div>
               <div class="timeline-project">
-                <div class="timeline-project-thumb"><div class="timeline-thumb-placeholder">&#x1F4F7;</div></div>
-                <div><div class="timeline-project-name">동아제약 강의</div><div class="timeline-project-date">&lt;2026.03&gt;</div></div>
+                <div class="timeline-project-thumb"><img src="현대차/KakaoTalk_20251110_105259601_02.jpg" alt="현대자동차 기술이전" loading="lazy" /></div>
+                <div><div class="timeline-project-name">현대자동차 기술이전</div><div class="timeline-project-date">&lt;2025.08~2026.01&gt;</div></div>
+              </div>
+              <div class="timeline-project">
+                <div class="timeline-project-thumb"><img src="images/portfolio/현대차제네시스/thumb.jpg" alt="현대자동차 제네시스" loading="lazy" /></div>
+                <div><div class="timeline-project-name">현대자동차 제네시스</div><div class="timeline-project-date">&lt;2026.02&gt;</div></div>
               </div>
             </div>
           </div>
@@ -1707,34 +1727,40 @@
 
     <div class="portfolio-grid">
       <!-- 2026 -->
-      <div class="portfolio-year-divider reveal"><div class="year-label">2026</div></div>
+      <div class="portfolio-year-divider reveal"><div class="year-label">2026년</div></div>
 
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
-        <div class="portfolio-name">동아제약 강의</div>
-        <div class="portfolio-date">2026.03</div>
+      <div class="portfolio-item" data-project="genesis-content" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/현대차제네시스/thumb.jpg" alt="현대자동차 제네시스" loading="lazy" /></div>
+        <div class="portfolio-name">현대자동차 제네시스</div>
+        <div class="portfolio-date">2026.02</div>
+      </div>
+
+      <div class="portfolio-item" data-project="hyundai-transfer" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="현대차/KakaoTalk_20251110_105259601_02.jpg" alt="현대자동차 기술이전" loading="lazy" /></div>
+        <div class="portfolio-name">현대자동차 기술이전</div>
+        <div class="portfolio-date">2025.08~2026.01</div>
       </div>
 
       <div class="portfolio-item">
-        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+        <div class="portfolio-thumb"><img src="images/portfolio/incheon-univ.png" alt="인천대 강의" loading="lazy" /></div>
         <div class="portfolio-name">인천대 강의</div>
         <div class="portfolio-date">2026.01</div>
       </div>
 
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+      <div class="portfolio-item" data-project="orcite-2026" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="https://img.youtube.com/vi/hotuW3MjFSk/maxresdefault.jpg" alt="오르시떼" loading="lazy" /></div>
         <div class="portfolio-name">오르시떼</div>
         <div class="portfolio-date">2026.01</div>
       </div>
 
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"><img src="images/startup-model.png" alt="SELECT AI MODEL 런칭" loading="lazy" /></div>
+      <div class="portfolio-item" data-project="select-ai-model" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/select-ai-model.webp" alt="SELECT AI MODEL" loading="lazy" /></div>
         <div class="portfolio-name">SELECT AI MODEL 런칭</div>
         <div class="portfolio-date">2026.01</div>
       </div>
 
       <!-- 2025 -->
-      <div class="portfolio-year-divider reveal"><div class="year-label">2025</div></div>
+      <div class="portfolio-year-divider reveal"><div class="year-label">2025년</div></div>
 
       <div class="portfolio-item" data-project="samsung-electronics" style="cursor:pointer">
         <div class="portfolio-thumb"><img src="images/portfolio/7.webp" alt="삼성전자" loading="lazy" /></div>
@@ -1742,15 +1768,15 @@
         <div class="portfolio-date">2025.12</div>
       </div>
 
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"><div class="portfolio-thumb-placeholder">&#x1F4F7;</div></div>
+      <div class="portfolio-item" data-project="orcite-2025" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="https://img.youtube.com/vi/ebxs5gK-yQY/maxresdefault.jpg" alt="오르시떼" loading="lazy" /></div>
         <div class="portfolio-name">오르시떼</div>
         <div class="portfolio-date">2025.12</div>
       </div>
 
-      <div class="portfolio-item">
-        <div class="portfolio-thumb"><img src="images/portfolio/8.webp" alt="현대자동차" loading="lazy" /></div>
-        <div class="portfolio-name">현대자동차</div>
+      <div class="portfolio-item" data-project="lg-2025" style="cursor:pointer">
+        <div class="portfolio-thumb"><img src="images/portfolio/lg-2025.webp" alt="LG전자" loading="lazy" /></div>
+        <div class="portfolio-name">LG전자</div>
         <div class="portfolio-date">2025.11</div>
       </div>
 
@@ -1791,7 +1817,7 @@
       </div>
 
       <!-- 2024 -->
-      <div class="portfolio-year-divider reveal"><div class="year-label">2024</div></div>
+      <div class="portfolio-year-divider reveal"><div class="year-label">2024년</div></div>
 
       <div class="portfolio-item" data-project="volkswagen" style="cursor:pointer">
         <div class="portfolio-thumb"><img src="images/portfolio/4.webp" alt="폭스바겐" loading="lazy" /></div>
@@ -1840,16 +1866,6 @@
       </div>
 
       <div class="biz-cards">
-        <a class="biz-card-wrap" href="https://crawled.vercel.app/" target="_blank" rel="noopener">
-          <div class="biz-card">
-            <div class="biz-card-bg" style="background-image:url('images/startup-select.png')"></div>
-          </div>
-          <div class="biz-card-info">
-            <div class="biz-card-info-name">AI 광고 제작</div>
-            <div class="biz-card-info-desc">AI 기반 광고 비주얼 제작</div>
-          </div>
-        </a>
-
         <a class="biz-card-wrap" href="https://www.selectaimodel.co.kr/" target="_blank" rel="noopener">
           <div class="biz-card">
             <div class="biz-card-bg" style="background-image:url('images/startup-model.png')"></div>
@@ -1857,6 +1873,16 @@
           <div class="biz-card-info">
             <div class="biz-card-info-name">AI 모델 에이전시</div>
             <div class="biz-card-info-desc">AI 기반 모델 매칭 및 에이전시 서비스</div>
+          </div>
+        </a>
+
+        <a class="biz-card-wrap" href="https://yours-lovat.vercel.app/" target="_blank" rel="noopener">
+          <div class="biz-card">
+            <div class="biz-card-bg" style="background-image:url('images/startup-select.png')"></div>
+          </div>
+          <div class="biz-card-info">
+            <div class="biz-card-info-name">가상피팅 서비스</div>
+            <div class="biz-card-info-desc">AI기반 가상피팅 서비스</div>
           </div>
         </a>
 
@@ -1941,6 +1967,54 @@
     (function () {
       // ─── Project Data ───
       var projectData = {
+        'genesis-content': {
+          title: '현대자동차 제네시스', category: '2026.02', tags: 'Automotive',
+          challenge: '제네시스 브랜드 감성을 담은 Instagram 영상 콘텐츠 기획',
+          solution: 'AI 기반 시네마틱 비주얼 제작으로 프리미엄 브랜드 경험 전달',
+          thumb: 'images/portfolio/현대차제네시스/thumb.jpg',
+          gallery: ['images/portfolio/현대차제네시스/gv_70.mov','images/portfolio/현대차제네시스/gv_80.mov']
+        },
+        'hyundai-transfer': {
+          title: '현대자동차 기술이전', category: '2025.08~2026.01', tags: 'Automotive',
+          challenge: '미래자동차 부서의 AI 기술 내재화를 위한 체계적 이전',
+          solution: '실무 맞춤형 AI 기술이전 프로그램 설계 및 운영',
+          thumb: '현대차/KakaoTalk_20251110_105259601_02.jpg',
+          gallery: ['현대차/KakaoTalk_20251110_105259601.jpg','현대차/KakaoTalk_20251110_105259601_01.jpg','현대차/KakaoTalk_20251110_105259601_02.jpg','현대차/KakaoTalk_20251110_105259601_03.jpg']
+        },
+        'select-ai-model': {
+          title: 'SELECT AI MODEL 런칭', category: '2026.01', tags: 'Tech / AI',
+          challenge: 'AI 모델 선택을 위한 직관적인 플랫폼 구축',
+          solution: '사용자 친화적 인터페이스와 AI 모델 비교 시스템 개발',
+          thumb: 'images/portfolio/select-ai-model.webp',
+          gallery: ['images/portfolio/select-ai-model.webp'],
+          externalLinks: [
+            { url: 'https://www.selectaimodel.co.kr/', label: '사이트 바로가기' }
+          ]
+        },
+        'orcite-2025': {
+          title: '오르시떼', category: '2025.12', tags: 'Commerce',
+          challenge: '브랜드 아이덴티티를 살린 AI 비주얼 콘텐츠 제작',
+          solution: 'AI 기반 영상 제작 및 브랜드 톤앤매너 최적화',
+          thumb: 'https://img.youtube.com/vi/ebxs5gK-yQY/maxresdefault.jpg',
+          gallery: ['youtube:ebxs5gK-yQY']
+        },
+        'orcite-2026': {
+          title: '오르시떼', category: '2026.01', tags: 'Commerce',
+          challenge: '브랜드 아이덴티티를 살린 AI 비주얼 콘텐츠 제작',
+          solution: 'AI 기반 영상 제작 및 브랜드 톤앤매너 최적화',
+          thumb: 'https://img.youtube.com/vi/hotuW3MjFSk/maxresdefault.jpg',
+          gallery: ['youtube:hotuW3MjFSk']
+        },
+        'lg-2025': {
+          title: 'LG전자', category: '2025.11', tags: 'Commerce',
+          challenge: '글로벌 시장을 겨냥한 AI 기반 브랜드 콘텐츠 제작',
+          solution: 'AI 비주얼 제작 및 글로벌 플랫폼 최적화 콘텐츠 배포',
+          thumb: 'images/portfolio/lg-2025.webp',
+          gallery: ['images/portfolio/lg-2025.webp'],
+          externalLinks: [
+            { url: 'https://www.tiktok.com/@lgitalia/video/7571469691479166230', label: 'TikTok 영상 보기' }
+          ]
+        },
         'samsung-electronics': {
           title: '삼성전자', category: '2025.12', tags: 'Tech / AI',
           challenge: '전사적 AI 비주얼 가이드라인 준수 및 고품질 구현',
@@ -2092,14 +2166,20 @@
         grid.className = 'pf-modal-gallery-grid' + (currentGallery.length === 1 ? ' single' : '');
         var html = '';
         currentGallery.forEach(function(src, i) {
-          var encoded = encodeURI(src);
-          var isVideo = encoded.toLowerCase().endsWith('.mp4') || encoded.toLowerCase().endsWith('.mov');
-          if (isVideo) {
+          var ytMatch = src.match(/^youtube:(.+)$/);
+          if (ytMatch) {
             html += '<div class="pf-gallery-item is-video" data-lb-index="' + i + '">'
-              + '<video src="' + encoded + '" muted playsinline preload="metadata" style="aspect-ratio:4/3"></video></div>';
+              + '<img src="https://img.youtube.com/vi/' + ytMatch[1] + '/maxresdefault.jpg" alt="YouTube" style="aspect-ratio:16/9" /></div>';
           } else {
-            html += '<div class="pf-gallery-item" data-lb-index="' + i + '">'
-              + '<img src="' + encoded + '" alt="Gallery ' + (i+1) + '" style="aspect-ratio:4/3" /></div>';
+            var encoded = encodeURI(src);
+            var isVideo = encoded.toLowerCase().endsWith('.mp4') || encoded.toLowerCase().endsWith('.mov');
+            if (isVideo) {
+              html += '<div class="pf-gallery-item is-video" data-lb-index="' + i + '">'
+                + '<video src="' + encoded + '" muted playsinline preload="metadata" style="aspect-ratio:4/3"></video></div>';
+            } else {
+              html += '<div class="pf-gallery-item" data-lb-index="' + i + '">'
+                + '<img src="' + encoded + '" alt="Gallery ' + (i+1) + '" style="aspect-ratio:4/3" /></div>';
+            }
           }
         });
         grid.innerHTML = html;
@@ -2122,16 +2202,24 @@
         lightbox.classList.remove('open');
         var vid = document.querySelector('#lbMedia video');
         if (vid) vid.pause();
+        var iframe = document.querySelector('#lbMedia iframe');
+        if (iframe) iframe.src = '';
       }
 
       function renderLightbox() {
         var media = document.getElementById('lbMedia');
-        var src = encodeURI(currentGallery[lbIdx]);
-        var isVideo = src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.mov');
-        if (isVideo) {
-          media.innerHTML = '<video src="' + src + '" controls autoplay muted playsinline></video>';
+        var raw = currentGallery[lbIdx];
+        var ytMatch = raw.match(/^youtube:(.+)$/);
+        if (ytMatch) {
+          media.innerHTML = '<iframe src="https://www.youtube.com/embed/' + ytMatch[1] + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:12px"></iframe>';
         } else {
-          media.innerHTML = '<img src="' + src + '" alt="Gallery" />';
+          var src = encodeURI(raw);
+          var isVideo = src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.mov');
+          if (isVideo) {
+            media.innerHTML = '<video src="' + src + '" controls autoplay muted playsinline></video>';
+          } else {
+            media.innerHTML = '<img src="' + src + '" alt="Gallery" />';
+          }
         }
         document.getElementById('lbCounter').textContent = currentGallery.length > 1 ? (lbIdx + 1) + ' / ' + currentGallery.length : '';
         var navDisplay = currentGallery.length > 1 ? '' : 'none';
